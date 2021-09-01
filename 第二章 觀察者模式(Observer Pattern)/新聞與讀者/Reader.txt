@@ -1,0 +1,33 @@
+package ObserverPatternExercise;
+
+public class Reader	implements Observer {
+	private String name;
+	private Observable news;
+	
+	public Reader(String name) {
+		this.name = name;
+	}
+	@Override
+	public void subscribe(Observable news) {
+		this.news = news;
+		news.register(this);
+	}
+
+	@Override
+	public void unsubscribe() {
+		news.cancelRegister(this);
+	}
+
+	@Override
+	public void update() {
+		read();
+	}
+	
+	private void read() {
+		if(((News)this.news).isLastestNews()) {
+			System.out.println(name +" read lastest news");
+		}else {
+			System.out.println(name +"read old news");
+		}
+	}
+}

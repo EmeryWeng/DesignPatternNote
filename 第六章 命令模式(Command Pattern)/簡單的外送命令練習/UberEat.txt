@@ -1,0 +1,12 @@
+package CommandPatternExercise;
+
+public class UberEat {		//調用者(Invoker)	要求命令物件執行請求
+	private Command command;	//通常持有命令物件
+					//這是客戶端真正觸發命令並要求命令執行相應操作的地方
+	public void setCommand(Command command) {	//傳入命令物件，被儲存在其中，以便以後需要用到
+		this.command = command;
+	}
+	public void order() {
+		command.execute();		//某個時間點，調用者呼叫命令物件的execute方法
+	}
+}

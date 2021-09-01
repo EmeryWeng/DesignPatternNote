@@ -1,0 +1,19 @@
+複合模式的定義:
+
+複合模式結合兩個或以上的模式，組成一個新的解決方案，可以解決一再發生的一般性問題
+
+
+
+複合模式 是指 一群模式 所結果起來一個模式 那此模式就是複合模式的一種
+
+例如最有名的 Model View Controller (MVC) 就是典型的複合模式
+
+因為內部Model 實踐觀察者模式	所以不必與View Controller 做依賴，完全獨立
+
+由於View 必須從Model中取得一些資料狀態，所以會持有Model參考，也需要將動作都轉交給Controller(策略物件)
+也會持有Controller參考
+
+Controller是View 和 Model的中間者，所以她也會持有兩者的參考
+View Controller 之間 實踐 策略模式
+View內部本身實踐合成模式做管理
+

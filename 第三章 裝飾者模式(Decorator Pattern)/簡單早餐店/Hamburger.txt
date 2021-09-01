@@ -1,0 +1,12 @@
+package DecoratorPatternExercise;
+
+public class Hamburger extends Breakfast{
+	public Hamburger() {
+		super.description = "漢堡";
+	}
+	@Override
+	public int cost() {
+		return 20;
+	}
+
+}

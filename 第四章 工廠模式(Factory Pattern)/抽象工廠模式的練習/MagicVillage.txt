@@ -1,0 +1,19 @@
+package FactoryPatternExercise;
+
+public class MagicanVillage extends RoleCreator {	//法師村莊，產出法師的地方，他是個ConcreteCreator
+						//透過Creator定義的工廠方法，然後由子類別決定實際類別為何者
+	@Override				//由於法師村莊是子類別，所以由他來決定法師村莊產生的實際類別
+	public Role createRole(String type) {		//為何，這裡產生的一律都是法師角色相關職業
+		Role role = null;
+		Equipment equipment = new MagicanEquipmentFactory();
+		if(type.equals("FightMagican")) {
+			role =  new FightMagican(equipment);
+			role.setName("超級戰鬥法師");
+		}else if(type.equals("Magican")) {
+			role =  new Magican(equipment);
+			role.setName("超級法師");
+		}
+		return role;
+	}
+
+}

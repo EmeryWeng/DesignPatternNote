@@ -1,0 +1,16 @@
+package ObserverPatternExercise1;
+
+public class Test {
+
+	public static void main(String[] args) {
+		ClientQueue queue = new ClientQueue();
+		Client c1 = new Client("Weng","192.2.1",queue);
+		Client c2 = new Client("Justin","168.0.1",queue);
+		queue.setConnect(true);
+		queue.cancelRegister(c1);
+		queue.setConnect(false);
+		queue.cancelRegister(c2);
+		queue.setConnect(true);
+	}
+
+}

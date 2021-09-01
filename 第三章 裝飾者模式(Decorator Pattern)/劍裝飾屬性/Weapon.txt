@@ -1,0 +1,9 @@
+package DecoratorPatternExercise;	//寫一個武器介面，可以把武器加上屬性的裝飾，並且獲得屬性的加成以及特殊效果，套用裝飾者模式
+					//這介面相當於Component，「原有類別」實作的介面，定義一些標準方法
+					
+public interface Weapon {		//這只是個簡單的武器介面，擁有武器名稱，傷害值，以及如何攻擊
+	String getName();		//這也能定義成抽象類別，如果一開始就以抽象類別給你，如果執行都很正常沒啥太大問題，就不必刻意
+	int getHitPoint();		//改用介面
+	void attack();
+	
+}

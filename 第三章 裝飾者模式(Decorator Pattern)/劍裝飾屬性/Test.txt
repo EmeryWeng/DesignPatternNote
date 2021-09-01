@@ -1,0 +1,36 @@
+package DecoratorPatternExercise;
+
+public class Test {
+
+	public static void main(String[] args) {	//執行類別
+		Weapon sword = new Sword();		//建立出普通的劍
+		Weapon fireSword = new FirePower(sword);//將劍 放入 火屬性 裝飾
+		Weapon holySword = new HolyPower(sword);//放入 聖屬性裝飾
+		Weapon poisonSword = new PoisonPower(sword);
+		Weapon holyFireSword = new HolyPower(fireSword);	//將火劍放入 聖屬性裝飾 形成聖火劍
+		Weapon poisonHolyFireSword = new PoisonPower(holyFireSword);//將聖火劍放入毒屬性裝飾
+								//形成 毒聖火劍
+			//所以套用此裝飾者模式，容易擴充，如果今天要在新增任何一屬性，只需繼承裝飾者類別
+			//並且實作自身的屬性效果，即可在執行時期動態地將責任加諸於物件上，容易擴充
+			//但缺點是 會創造出很多小類別，當數量一多，程式碼便不易理解
+		Warrior warrior = new Warrior("Weng",sword);	//戰士名稱，以及配戴 普通劍
+		warrior.attack();	
+		
+		warrior.setWeapon(fireSword);	//設定火劍
+		warrior.attack();		//此時攻擊
+			//執行出 使用火劍 造成 火+劍的加總 點傷害
+			//並執行 火的特殊技能，然而在火屬性的special方法會再呼叫父類的special()方法
+			//此時父類的weapon是 普通的劍 在if區塊不成立，並不會再度執行special()方法
+		warrior.setWeapon(holySword);
+		warrior.attack();
+		
+		warrior.setWeapon(poisonSword);
+		warrior.attack();
+		
+		warrior.setWeapon(holyFireSword);
+		warrior.attack();
+		warrior.setWeapon(poisonHolyFireSword);
+		warrior.attack();
+	}
+
+}

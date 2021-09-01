@@ -1,0 +1,5 @@
+package StrategyPattern;
+
+public interface WeaponBehavior {	//定義一個武器行為的介面
+	void useWeapon();
+}

@@ -1,0 +1,13 @@
+package DecoratorPatternExercise;
+
+public class Toast extends Breakfast{
+	
+	public Toast() {
+		super.description = "吐司";
+	}
+	@Override
+	public int cost() {
+		return 10;
+	}
+	
+}

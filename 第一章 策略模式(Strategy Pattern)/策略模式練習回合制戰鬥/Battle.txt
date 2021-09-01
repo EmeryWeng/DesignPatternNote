@@ -1,0 +1,32 @@
+package StrategyPatternExercise;
+
+
+public class Battle {		//控制兩位英雄的回合制戰鬥 類別
+	private Hero[] heroes = new Hero[2];	//兩位英雄 用陣列來維護
+	public Battle(Hero hero1,Hero hero2) {	//需傳入兩位英雄 放入陣列中
+		heroes[0] = hero1;
+		heroes[1] = hero2;
+	}
+	public void start() {	//開始戰鬥方法
+		int turn = 1;	//假設為第一輪
+		
+		while(!isGameOver()) {	//遊戲還沒結束之前 代表著還尚未有英雄死亡 就不斷繼續
+			turn = turn == 0? 1:0;	//一開始turn 為 1 所以三元運算為 0 然後再將0存進turn
+			processHeroTurn(turn);	//將turn = 0 丟進去~~  此時如果下一輪 turn儲存的是0
+		}							//三元運算為true 所以turn = 1 
+		
+		System.out.printf("勝利者為 %s%n",heroes[turn].getName());
+	}
+	private boolean isGameOver() {	//當 其中一位英雄 isAlive回傳false 代表死亡 因此補數會為true
+			// true or 運算 答案一定是true 因此 isGameOver 回傳true 代表遊戲結束
+		return !heroes[0].isAlive() || !heroes[1].isAlive();
+	}
+	
+	private void processHeroTurn(int heroIndex) {	//此時為0
+		Hero attackingHero = heroes[heroIndex];	//索引0的英雄 為進行攻擊的英雄~~  再將1帶入
+		Hero attackedHero = heroes[heroIndex == 0? 1:0];//索引中 三元運算為true 所以會變成1~~  此時三元運算為false 所以是索引0 
+								//所以被攻擊的英雄就是索引1的英雄	//藉此達到回合制
+		System.out.printf("輪到%s%n",attackingHero.getName());
+		attackingHero.attack(attackedHero);//然後執行攻擊方法
+	}
+}

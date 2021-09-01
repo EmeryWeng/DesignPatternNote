@@ -1,0 +1,6 @@
+package DecoratorPatternExercise;
+
+public abstract class HotPotDecorator extends HotPot{
+	@Override
+	public abstract String getDescription();
+}

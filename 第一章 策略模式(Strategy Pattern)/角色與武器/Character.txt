@@ -1,0 +1,14 @@
+package StrategyPattern;
+
+public abstract class Character {	//定義一個角色的抽象類別
+	protected WeaponBehavior weaponBehavior;	每個角色都擁有一個武器
+	
+	public void fight() {			//並且根據當前角色所持有的武器 進行戰鬥
+		weaponBehavior.useWeapon();
+	}
+	public void setWeapon(WeaponBehavior weaponBehavior) {	//setter方法，可用來更改武器，重點是能在
+		this.weaponBehavior = weaponBehavior;		//執行時期做更換 
+	}
+	public abstract void display();
+		
+}

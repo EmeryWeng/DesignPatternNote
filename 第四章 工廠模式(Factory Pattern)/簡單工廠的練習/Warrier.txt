@@ -1,0 +1,14 @@
+package FactoryPatternExercise;
+
+public class Warrier extends Role{
+
+	public Warrier(String name, int level) {
+		super.name = name;
+		super.level = level;
+		attackPoint = 20;
+		defense = 20;
+		hp = 200;
+		
+	}
+
+}

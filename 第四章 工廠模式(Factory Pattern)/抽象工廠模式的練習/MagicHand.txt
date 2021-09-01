@@ -1,0 +1,8 @@
+package FactoryPatternExercise;
+
+public class MagicanHand implements Hand{	//手套的具象類別
+	@Override
+	public String toString() {
+		return "法師系列專用手套";
+	}
+}

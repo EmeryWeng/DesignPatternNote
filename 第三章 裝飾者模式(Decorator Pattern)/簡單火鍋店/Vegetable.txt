@@ -1,0 +1,17 @@
+package DecoratorPatternExercise;
+
+public class Vegetable extends HotPotDecorator{
+	private HotPot hotPot;
+	public Vegetable(HotPot hotPot) {
+		this.hotPot = hotPot;
+	}
+	@Override
+	public String getDescription() {
+		return hotPot.getDescription() +"加蔬菜";
+	}
+
+	@Override
+	public int cost() {
+		return 35 + hotPot.cost();
+	}
+}

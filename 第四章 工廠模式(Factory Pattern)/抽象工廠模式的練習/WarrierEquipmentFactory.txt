@@ -1,0 +1,27 @@
+package FactoryPatternExercise;
+
+public class WarrierEquipmentFactory implements Equipment {	//透過一個介面所形成的物件之家族
+					//產生對應角色的裝備，由這裡來負責生產，這裡就是戰士裝備工廠
+					//由戰士工廠來決定，生產的戰士一套裝備為何
+					//提供的就是戰士「一套」的裝備
+	@Override
+	public Hand createHand() {
+		return new WarrierHand();
+	}
+
+	@Override
+	public Head createHead() {
+		return new WarrierHead();
+	}
+
+	@Override
+	public Foot createFoot() {
+		return new WarrierFoot();
+	}
+
+	@Override
+	public Weapon createWeapon() {
+		return new Axe();
+	}
+	
+}

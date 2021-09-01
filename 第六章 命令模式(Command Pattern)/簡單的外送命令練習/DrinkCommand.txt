@@ -1,0 +1,13 @@
+package CommandPatternExercise;
+		
+public class DrinkCommand implements Command{		//實體命令(ConcreteCommand)是一個命令，必須實踐
+	private MilkShop drink;	//記錄了一個接收者	//Command介面
+	public DrinkCommand(MilkShop drink) {
+		this.drink = drink;
+	}
+	@Override
+	public void execute() {
+		drink.prepare();	//以及記錄接收者的一組動作
+	}
+	
+}

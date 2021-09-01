@@ -1,0 +1,10 @@
+package FactoryPatternExercise;
+
+public class GameStart {
+	public static void main(String[] args) {
+		RoleSimpleFactory factory = new RoleSimpleFactory();
+		RoleFighting r = new RoleFighting(factory);
+		Role role = r.startGame("Warrier");
+		System.out.println("創造出"+role.getName());
+	}
+}

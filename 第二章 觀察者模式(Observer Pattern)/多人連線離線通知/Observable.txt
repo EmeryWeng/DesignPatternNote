@@ -1,0 +1,7 @@
+package ObserverPatternExercise1;
+
+public interface Observable {	//Subject介面 主題介面，定義簡單的註冊 取消註冊 還有最重要的通知觀察者
+	void register(Observer client);	//而註冊的對象不用管來自哪裡 是何方神聖，只需要知道他有無實作
+	void cancelRegister(Observer client);	//Observer介面即可， 所以註冊及取消註冊都必須傳入
+	void notifyObserver();			//ConcreteObserver
+}

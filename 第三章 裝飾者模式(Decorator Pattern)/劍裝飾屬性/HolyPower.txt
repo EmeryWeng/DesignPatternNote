@@ -1,0 +1,19 @@
+package DecoratorPatternExercise;
+							
+public class HolyPower extends WeaponDecorator{				//聖屬性的效果 基本上都差不多
+
+	public HolyPower(Weapon weapon) {
+		super("聖",3, weapon);
+	}
+	@Override
+	public void special() {
+		super.special();
+		System.out.println("特殊效果 : 回復 5點HP");
+	}
+}
+			//這裡假設 此輪傳進來是已被裝飾過一次的 「火劍」，現在傳進來 要再以聖屬性包裹
+			//此時 傳進父類的建構子中的weapon將會是火劍 然而 火劍的加成 已在 火+劍的同時包裹完成
+			//所以 聖屬性在+上已經包裹一次的火劍上，此輪的屬性是聖 +「火劍」 所以在父類中，會呼叫this.special()
+			//會叫到聖屬性的特殊效果 並且在super.special()在呼叫上一次裝飾的，而上輪裝飾的 是 火+劍 所以會執行
+			//火的特殊效果 再呼叫super.special()呼叫到普通的劍 普通的劍 不執行，所以執行下來 會顯示
+			//火屬性的特殊效果 再來 聖屬性。 利用最外圈的裝飾者呼叫，然後層層向內呼叫(傳遞)最後從最內執行到最外圈		

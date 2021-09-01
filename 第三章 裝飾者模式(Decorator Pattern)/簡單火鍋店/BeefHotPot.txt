@@ -1,0 +1,13 @@
+package DecoratorPatternExercise;
+
+public class BeefHotPot extends HotPot {
+	public BeefHotPot() {
+		super.description = "牛肉火鍋";
+	}
+	@Override
+	public int cost() {
+		return 70;
+	}
+	
+	
+}

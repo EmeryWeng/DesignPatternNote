@@ -1,0 +1,7 @@
+package StrategyPatternExercise;
+
+public class MpNotEnoughException extends RuntimeException{	//為 魔力不夠的例外 如果繼承Exception 會變成
+	public MpNotEnoughException() {			//受檢例外(Checked Exception)
+		super("魔力不夠");			//但我們要在執行時期 才會去檢查是否魔力不夠
+	}						//如果魔力不夠還執行魔法攻擊 將會在執行時 拋出例外
+}							//然後告訴使用者 魔力不足

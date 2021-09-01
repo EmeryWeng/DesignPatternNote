@@ -1,0 +1,21 @@
+package FactoryPatternExercise;
+
+public class Warrier extends Role{	//ConcreteProduct
+	Equipment equipment;
+	public Warrier(Equipment equipment) {
+		this.equipment = equipment;
+		super.level = 10;
+		attackPoint = 200;
+		defense = 200;
+		hp = 2000;
+		
+	}
+	@Override
+	public void showEquipment() {
+		head = equipment.createHead();
+		hand = equipment.createHand();
+		foot = equipment.createFoot();
+		weapon = equipment.createWeapon();
+	}
+
+}

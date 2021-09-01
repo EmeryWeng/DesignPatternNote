@@ -1,0 +1,10 @@
+package No1StrategyPattern;
+
+public class FlyNoWay implements FlyBehavior{
+
+	@Override
+	public void fly() {
+		System.out.println("鴨子不會飛");
+	}
+	
+}

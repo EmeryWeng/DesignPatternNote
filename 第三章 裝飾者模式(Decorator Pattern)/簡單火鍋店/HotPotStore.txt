@@ -1,0 +1,14 @@
+package DecoratorPatternExercise;
+
+public class HotPotStore {
+
+	public static void main(String[] args) {
+		HotPot hotPot = new SeafoodHotPot();
+		hotPot = new DuckBlood(hotPot);
+		hotPot = new Vegetable(hotPot);
+		hotPot = new Tofu(hotPot);
+		System.out.println("老闆請問多少錢?");
+		System.out.println(hotPot.getDescription() + "總共" +hotPot.cost() +"$");
+	}
+
+}

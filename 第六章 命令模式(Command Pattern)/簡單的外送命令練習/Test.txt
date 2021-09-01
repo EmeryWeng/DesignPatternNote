@@ -1,0 +1,17 @@
+package CommandPatternExercise;
+
+public class Test {			//這是客戶端，命令由客戶端建立，並設定命令的接收者
+	public static void main(String[] args) {
+		UberEat uberEat = new UberEat();	//建立調用者
+		Mcdonald m = new Mcdonald();		//建立接收者
+		FoodCommand food = new FoodCommand(m);	//建立命令物件
+		MilkShop ms = new MilkShop();
+		DrinkCommand drink = new DrinkCommand(ms);
+		uberEat.setCommand(food);	//設定命令物件
+		uberEat.order();		//執行命令 order方法會呼叫此命令物件的execute方法
+		uberEat.setCommand(drink);	//food命令物件則會呼叫內部接收者的方法執行對應操作
+		uberEat.order();		//food命令物件內部記錄了接收者以及一組動作
+						//對於調用者，不需要知道此命令物件需要呼叫誰，需要做甚麼
+	}					//只需知道他實踐了Command介面可呼叫execute方法即可
+}					//實際做甚麼樣的事情通知了誰，對於調用者都無須知道，他只負責
+					//傳遞命令 命令物件自己會去通知接收者做出對應的動作

@@ -1,0 +1,5 @@
+package ObserverPatternExercise1;
+
+public interface Observer {	//簡單的成為觀察者必須實作的觀察者介面 只有定義一個update方法
+	void update();
+}

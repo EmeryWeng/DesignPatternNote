@@ -1,0 +1,17 @@
+package DecoratorPatternExercise;
+
+public class Lettuce extends BreakfastDecorator{
+	private Breakfast breakfast;
+	public Lettuce(Breakfast breakfast) {
+		this.breakfast = breakfast;
+	}
+	@Override
+	public String getDescription() {
+		return breakfast.getDescription() +"加生菜";
+	}
+
+	@Override
+	public int cost() {
+		return 20 + breakfast.cost();
+	}
+}

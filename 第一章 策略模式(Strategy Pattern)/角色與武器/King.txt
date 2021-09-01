@@ -1,0 +1,13 @@
+package StrategyPattern;
+
+public class King extends Character{		//可以透過直接建構時 在建構子中 就先建構出持有的武器類別
+	public King(String name,int hp) {		//當在執行fight方法 就會參考到SwordBehavior
+		weaponBehavior = new SwordBehavior();	//也可透過setWeapon方法設定
+	}
+	
+	@Override
+	public void display() {
+		System.out.println("國王駕到");
+	}
+	
+}

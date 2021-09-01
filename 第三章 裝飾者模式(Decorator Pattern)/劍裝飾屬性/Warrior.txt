@@ -1,0 +1,22 @@
+package DecoratorPatternExercise;
+
+public class Warrior {		//戰士類別
+	private String name;	//名稱
+	private Weapon weapon;	//配戴的武器
+	public Warrior(String name,Weapon weapon) {
+		this.name = name;
+		this.weapon = weapon;
+	}
+	public void attack() {		//攻擊方法
+		System.out.print(name + "使用");
+		weapon.attack();	//呼叫配戴的武器的攻擊，如果此時配戴聖火劍 就是以聖火劍執行攻擊
+		System.out.println();	//所以會顯示 聖+火+劍 加總後的傷害值 並且顯示出 火與聖兩個屬性的
+					//特殊效果
+	}
+	public Weapon getWeapon() {
+		return weapon;
+	}
+	public void setWeapon(Weapon weapon) {	//提供換武器的方法
+		this.weapon = weapon;
+	}
+}

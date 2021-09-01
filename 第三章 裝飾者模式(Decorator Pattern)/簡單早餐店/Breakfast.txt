@@ -1,0 +1,9 @@
+package DecoratorPatternExercise;
+
+public abstract class Breakfast {
+	String description = "Unknown Breakfast";
+	public String getDescription() {
+		return description;
+	}
+	public abstract int cost();
+}

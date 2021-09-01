@@ -1,0 +1,15 @@
+package FactoryPatternExercise;
+
+public class MagicanVillage extends RoleCreator {
+
+	@Override
+	public Role createRole(String type) {
+		if(type.equals("FightMagican")) {
+			return new FightMagican();
+		}else if(type.equals("Magican")) {
+			return new Magican();
+		}
+		return null;
+	}
+
+}

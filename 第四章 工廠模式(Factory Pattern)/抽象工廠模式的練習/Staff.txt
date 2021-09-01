@@ -1,0 +1,8 @@
+package FactoryPatternExercise;
+
+public class Staff implements Weapon{	//武器的具象類別
+	@Override
+	public String toString() {
+		return "魔法杖";
+	}
+}

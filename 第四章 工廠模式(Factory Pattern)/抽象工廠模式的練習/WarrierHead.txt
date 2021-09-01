@@ -1,0 +1,8 @@
+package FactoryPatternExercise;
+
+public class WarrierHead implements Head{	//頭盔的具象類別
+	@Override
+	public String toString() {
+		return "戰士系列專用頭盔";
+	}
+}

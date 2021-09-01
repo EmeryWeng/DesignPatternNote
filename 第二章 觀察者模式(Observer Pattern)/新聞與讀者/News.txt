@@ -1,0 +1,32 @@
+package ObserverPatternExercise;
+
+import java.util.ArrayList;
+
+public class News implements Observable{
+	private ArrayList<Observer> readerList = new ArrayList<>();
+	private boolean lastestNews = true;
+	
+	public boolean isLastestNews() {
+		return lastestNews;
+	}
+	public void setLastestNews(boolean lastestNews) {
+		this.lastestNews = lastestNews;
+		notifyObserver();
+	}
+	@Override
+	public void register(Observer reader) {
+		readerList.add(reader);
+	}
+	@Override
+	public void cancelRegister(Observer reader) {
+		readerList.remove(reader);
+	}
+
+	@Override
+	public void notifyObserver() {
+		for(Observer reader : readerList) {
+			reader.update();
+		}
+	}
+
+}

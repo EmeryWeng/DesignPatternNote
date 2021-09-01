@@ -1,0 +1,19 @@
+package FactoryPatternExercise;
+
+public class FightMagican extends Role{	//ConcreteProduct
+	Equipment equipment;
+	public FightMagican(Equipment equipment) {
+		this.equipment = equipment;
+		super.level = 30;
+		super.attackPoint = 1000;
+		super.defense = 300;
+		super.hp = 3000;
+	}
+	@Override
+	public void showEquipment() {
+		head = equipment.createHead();
+		hand = equipment.createHand();
+		foot = equipment.createFoot();
+		weapon = equipment.createWeapon();
+	}
+}

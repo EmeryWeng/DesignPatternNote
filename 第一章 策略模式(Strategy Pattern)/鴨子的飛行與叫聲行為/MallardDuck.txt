@@ -1,0 +1,15 @@
+package No1StrategyPattern;
+
+public class MallardDuck extends Duck {
+	
+	
+	public MallardDuck(FlyBehavior flyBehavior, QuackBehavior quackBehavior) {
+		super(flyBehavior, quackBehavior);
+	}
+
+	@Override
+	public void display() {
+		System.out.println("I am a real Mallard Duck");
+	}
+	
+}

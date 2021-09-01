@@ -1,0 +1,18 @@
+package DecoratorPatternExercise;
+
+public class DuckBlood extends HotPotDecorator{
+	private HotPot hotPot;
+	public DuckBlood(HotPot hotPot) {
+		this.hotPot = hotPot;
+	}
+	@Override
+	public String getDescription() {
+		return hotPot.getDescription() +"加鴨血";
+	}
+
+	@Override
+	public int cost() {
+		return 20 + hotPot.cost();
+	}
+
+}

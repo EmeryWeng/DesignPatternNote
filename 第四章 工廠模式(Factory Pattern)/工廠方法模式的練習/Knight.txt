@@ -1,0 +1,12 @@
+package FactoryPatternExercise;
+
+public class Knight extends Role {
+	public Knight() {
+		super.name = "騎士";
+		super.level = 30;
+		attackPoint = 50;
+		defense = 50;
+		hp = 500;
+		
+	}
+}

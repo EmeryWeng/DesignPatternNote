@@ -1,0 +1,25 @@
+package FactoryPatternExercise;
+
+public class MagicanEquipmentFactory implements Equipment{	//透過一個介面所形成的物件之家族
+					//產生對應角色的裝備，由這裡來負責生產，這裡就是魔法師裝備工廠
+	@Override			//提供的就是魔法師「一套」的裝備
+	public Hand createHand() {
+		return new MagicanHand();
+	}
+
+	@Override
+	public Head createHead() {
+		return new MagicanHead();
+	}
+
+	@Override
+	public Foot createFoot() {
+		return new MagicanFoot();
+	}
+
+	@Override
+	public Weapon createWeapon() {
+		return new Staff();
+	}
+
+}

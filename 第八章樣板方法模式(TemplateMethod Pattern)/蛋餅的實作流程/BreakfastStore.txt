@@ -1,0 +1,12 @@
+package TemplateMethodPatternExercise;
+
+public class BreakfastStore {
+
+	public static void main(String[] args) {
+		System.out.println("你好需要甚麼蛋餅");
+		Omelette pork = new HamOmelette();
+		pork.doOmelette();
+		System.out.println("你點的蛋餅已完成");
+	}
+
+}

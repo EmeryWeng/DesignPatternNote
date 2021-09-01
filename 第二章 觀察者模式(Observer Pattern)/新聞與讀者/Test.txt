@@ -1,0 +1,15 @@
+package ObserverPatternExercise;
+
+public class Test {
+
+	public static void main(String[] args) {
+		News news = new News();
+		Reader weng = new Reader("Weng");
+		Reader justin = new Reader("Justin");
+		
+		weng.subscribe(news);
+		justin.subscribe(news);
+		news.setLastestNews(false);
+	}
+
+}

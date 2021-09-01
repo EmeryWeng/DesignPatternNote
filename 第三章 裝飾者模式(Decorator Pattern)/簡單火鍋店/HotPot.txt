@@ -1,0 +1,9 @@
+package DecoratorPatternExercise;
+
+public abstract class HotPot {
+	String description = "Unknown";
+	public String getDescription() {
+		return description;
+	}
+	public abstract int cost();
+}

@@ -1,0 +1,12 @@
+package CommandPatternExercise;
+
+public class FoodCommand implements Command{	//實體命令(ConcreteCommand)是一個命令，必須實踐
+	private Mcdonald food;	//記錄了一個接收者		//Command介面
+	public FoodCommand(Mcdonald food) {
+		this.food = food;
+	}
+	@Override
+	public void execute() {
+		food.prepare();	//以及記錄接收者的一組動作
+	}
+}

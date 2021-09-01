@@ -1,0 +1,15 @@
+package FactoryPatternExercise;
+
+public class WarrierVillage extends RoleCreator {
+
+	@Override
+	public Role createRole(String type) {
+		if(type.equals("Knight")) {
+			return new Knight();
+		}else if(type.equals("Warrier")) {
+			return new Warrier();
+		}
+		return null;
+	}
+	
+}

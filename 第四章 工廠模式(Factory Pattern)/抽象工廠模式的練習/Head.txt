@@ -1,0 +1,5 @@
+package FactoryPatternExercise;
+
+public interface Head {	//物件之家族
+	public String toString();
+}

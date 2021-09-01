@@ -1,0 +1,85 @@
+package StrategyPatternExercise;
+
+public class Hero {		//寫一個英雄類別 一個英雄 擁有以下屬性，名字、血量、魔力、力量、智力、防禦
+	private String name;	//以及一個技能
+	private int hp = 500;
+	private int mp = 50;
+	private int strength = 150;
+	private int wisdom = 80;
+	private int defense = 50;
+	private Skill skill;		//我們套用策略模式，將容易更動的技能獨立出來成一個介面，包含且維護了
+				//Skill
+				//每隻英雄都有可能擁有不同種類的技能，所以技能容易被更動，也必須應該可被更動
+		//如果未來你能轉職，是否技能要跟著變動呢? 如果濫用繼承，將會難以做到
+	
+	public Hero(String name,Skill skill) {	//英雄的基本屬性已經被我們給定初始值，只須給英雄，名稱及技能
+		this.name = name;
+		this.skill = skill;
+	}
+	
+	public void attack(Hero targetHero) {	//攻擊方法
+		int injury = skill.attack(this, targetHero);
+		System.out.printf("%s 使用了 %s,傷害值為%d%n",this.getName(),skill,injury);
+		System.out.printf("%s 的HP剩下%d%n",targetHero.getName(),targetHero.getHp());
+	}
+	public void lostHp(int hp) {	//扣血方法
+		setHp(getHp()-hp);
+	}
+	public void lostMp(int mp)   {	//使用魔法攻擊所消耗的魔力，假設不夠魔力就拋出自定義的MpNotEnoughException
+		if(getMp() < mp) {	//來提醒魔力不夠使用
+			throw new MpNotEnoughException();
+		}
+		setMp(getMp()-mp);
+	}
+	public boolean isAlive() {		//檢查英雄是否活著
+		return hp>0;
+	}
+	public int getHp() {
+		return hp;
+	}
+
+	public void setHp(int hp) {
+		this.hp = hp;
+		if(!isAlive()) {	//假設isAlive()傳回false 代表死亡，經過補數為true if區塊執行陣亡
+			System.out.printf("%s 已陣亡%n",getName());
+		}
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getMp() {
+		return mp;
+	}
+
+	public void setMp(int mp) {
+		this.mp = mp;
+	}
+
+	public int getStrength() {
+		return strength;
+	}
+
+	public void setStrength(int strength) {
+		this.strength = strength;
+	}
+
+	public int getWisdom() {
+		return wisdom;
+	}
+
+	public void setWisdom(int wisdom) {
+		this.wisdom = wisdom;
+	}
+
+	public int getDefense() {
+		return defense;
+	}
+
+	public void setDefense(int defense) {
+		this.defense = defense;
+	}
+	
+}

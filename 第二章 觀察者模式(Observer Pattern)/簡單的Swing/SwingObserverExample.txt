@@ -1,0 +1,55 @@
+package JavaObserverPattern;
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import javax.swing.*;
+
+
+public class SwingObserverExample  {	//Swing元件中 關於事件 基本上都是用觀察者模式，對有興趣的進行註冊
+					//然後加入觀察者 當狀態改變 觀察者就會收到通知且自動被更新
+	JFrame frame;
+	public void go() {
+		frame = new JFrame();
+		frame.setTitle("Change Life");
+		frame.setSize(500,300);
+		JButton button = new JButton("Should i do it?");
+		button.addActionListener(new AngelListener());	//我想在此Button中註冊滑鼠事件，所以必須加入
+		button.addActionListener(new DevilListener());	//滑鼠觀察者，要成為滑鼠觀察者必須實作
+							//ActionListener介面
+		frame.getContentPane().add(BorderLayout.CENTER,button);
+		frame.setVisible(true);
+		frame.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent event) {
+				System.exit(0);
+			}
+		});
+	}
+	class AngelListener implements ActionListener{		//利用兩個內部類別 實作ActionListener成為
+								//滑鼠觀察者
+							//當此JButton(主題)狀態被改變，也就是我們點擊的時候
+						//觀察者都會收到通知 執行actionPerformed(ActionEvent e)
+					//這裡不是執行update!
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			System.out.println("Don't do it,you might regret it!");
+		}
+		
+	}
+	
+	class DevilListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			System.out.println("Come on, do it!");
+		}
+		
+	}
+	public static void main(String[] args) {
+		SwingObserverExample example = new SwingObserverExample();
+		example.go();
+	}
+}

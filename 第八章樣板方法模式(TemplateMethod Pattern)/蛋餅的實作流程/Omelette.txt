@@ -1,0 +1,25 @@
+package TemplateMethodPatternExercise;
+
+public abstract class Omelette {	
+	public final void doOmelette() {	//樣板方法
+		putOil();
+		putOmeletteCrust();
+		putEgg();
+		putCondiment();	//會因為放的配料不同而形成不同蛋餅，例如放火腿 是火腿蛋餅 放起司是起司蛋餅等
+		box();		//所以宣告為抽象由子類別實踐
+	}			//剩下的每個步驟(方法)都是一樣 所以應該共享，如果沒有提升到父類別則會使得
+				//每個子類別不斷的重複鍵入這些程式碼。
+	public void putOil() {
+		System.out.println("倒沙拉油");
+	}
+	public void putOmeletteCrust() {
+		System.out.println("放蛋餅皮");
+	}
+	public void putEgg() {
+		System.out.println("煎一顆蛋");
+	}
+	public abstract void putCondiment();
+	public void box() {
+		System.out.println("裝盒");
+	}
+}

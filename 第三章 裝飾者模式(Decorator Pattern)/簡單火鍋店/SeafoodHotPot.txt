@@ -1,0 +1,12 @@
+package DecoratorPatternExercise;
+
+public class SeafoodHotPot extends HotPot{
+	public SeafoodHotPot() {
+		super.description = "海鮮火鍋";
+	}
+	@Override
+	public int cost() {
+		return 50;
+	}
+
+}

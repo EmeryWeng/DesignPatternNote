@@ -1,0 +1,8 @@
+package FactoryPatternExercise;
+
+public interface Equipment {	//提供一個介面 建立相關或相依的「物件之家族」，而不需明確指定具體對象
+	public Hand createHand();
+	public Head createHead();
+	public Foot createFoot();
+	public Weapon createWeapon();
+}

@@ -1,0 +1,30 @@
+package No2ObserverPattern;
+
+public class ForecastDisplay implements Observer,DisplayElement{
+	private float currentPressure = 29.92f;
+	private float lastPressure;
+	private WeatherData weatherData;
+	public ForecastDisplay(WeatherData weatherData) {
+		this.weatherData = weatherData;
+		weatherData.registerObserver(this);
+	}
+	@Override
+	public void display() {
+		System.out.println("ForecastDisplay :");
+		if(currentPressure > lastPressure) {
+			System.out.println("天氣不錯!");
+		}else if(currentPressure == lastPressure) {
+			System.out.println("沒有變");
+		}else if(currentPressure < lastPressure ){
+			System.out.println("可能會下雨");
+		}
+	}
+
+	@Override
+	public void update(float temp, float humidity, float pressure) {
+		lastPressure = currentPressure;
+		currentPressure = pressure;
+		display();
+	}
+
+}

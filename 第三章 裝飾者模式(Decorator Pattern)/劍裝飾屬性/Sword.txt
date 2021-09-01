@@ -1,0 +1,22 @@
+package DecoratorPatternExercise;
+
+public class Sword implements Weapon {	//定義一把劍，實作 武器介面，這相當於ConcreteComponent，原有類別
+	private String name = "劍";	//名稱
+	private int hitPoint = 10;	//傷害值
+	
+	@Override
+	public String getName() {
+		return name;
+	}
+
+	@Override
+	public int getHitPoint() {
+		return hitPoint;
+	}
+
+	@Override
+	public void attack() {
+		System.out.println(name + "造成" + hitPoint + "點傷害");
+	}
+
+}

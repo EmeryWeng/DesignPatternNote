@@ -1,0 +1,11 @@
+package FactoryPatternExercise;
+
+public class FightMagican extends Role{
+	public FightMagican() {
+		super.name = "戰鬥法師";
+		super.level = 30;
+		super.attackPoint = 100;
+		super.defense = 30;
+		super.hp = 300;
+	}
+}

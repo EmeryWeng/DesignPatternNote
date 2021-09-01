@@ -1,0 +1,20 @@
+package FactoryPatternExercise;
+
+public class Knight extends Role {	//ConcreteProduct
+	Equipment equipment;
+	public Knight(Equipment equipment) {
+		this.equipment = equipment;
+		super.level = 30;
+		attackPoint = 500;
+		defense = 500;
+		hp = 5000;
+		
+	}
+	@Override
+	public void showEquipment() {
+		super.head = equipment.createHead();
+		super.hand = equipment.createHand();
+		super.foot = equipment.createFoot();
+		super.weapon = equipment.createWeapon();
+	}
+}

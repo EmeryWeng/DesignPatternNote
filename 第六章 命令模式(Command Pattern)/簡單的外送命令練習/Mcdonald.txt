@@ -1,0 +1,7 @@
+package CommandPatternExercise;
+
+public class Mcdonald {		//接收者，真正執行命令的地方
+	public void prepare() {
+		System.out.println("麥當勞餐點準備完成等待外送");
+	}
+}

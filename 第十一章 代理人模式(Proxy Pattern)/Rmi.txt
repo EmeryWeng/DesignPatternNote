@@ -1,0 +1,31 @@
+首先 須先建立遠端介面
+介面必須繼承java.rmi.Remote
+然後在建立需要重新實踐的方法(抽象的)同時拋出例外RemoteException
+重點 此方法如果需要傳參數 或是 會回傳值，參數和回傳值一定要可以序列化，否則請自行實作Serializable介面
+
+
+再來要 將實踐內容的類別(真正在做事的物件)實踐遠端介面(stub和實踐內容的類別都必須實踐遠端介面，要有相同型態)
+然後同時繼承java.rmi.server.UnicastRemoteObject方可成為伺服器端的服務物件
+
+然後要建立一個建構子同時拋出RemoteException，原因是父類別的建構子也會拋出相同例外
+
+然後將其遠端介面的方法給予實踐。
+
+再來透過一個類別 進行端口的建立 並且綁定 做法是，先將服務物件實體化，MyRemote server = new MyRemoteImpl
+前面要是介面，原因是要用介面上的方法，然後創立端口，Java預設端口為1099，創立自己的端口做法是
+LocateRegistry.createRegistry(輸入端口號碼通常是四位數 例如 8888)
+然後用Naming.rebind(String name,server) 用此靜態方法，將這個實踐內容的類別與給定的服務名稱綁定，
+這裡的名稱需要給定格式 "rmi://localhost:端口號碼/名稱",server ->"rmi://localhost:8888/RemoteTest",server 這樣
+就會將其綁定 將stub放進Registry中
+
+再來新增一個Client類別，透過Naming.lookup(輸入名稱)方法搜尋 Naming.lookup("rmi://localhost:8888/RemoteTest")
+回傳的物件型態會是 Object 所以必須重新扮演回 你介面給定的型態MyRemote 再來執行你要調用的方法
+
+這裡有個重點 如果你直接執行client的程式碼 很有可能註冊還未執行 等於 尚未註冊 你就去搜索 就會拋出例外
+再來 註冊的動作 不該與 實踐內容的類別 寫在一起，否則當他要註冊結果跑到服務物件中，結果是要執行還是註冊?
+
+所以先將端口建立的那個類別執行 此時會進入阻斷狀態，代表已經成功創立端口綁定好 此時讓它保持在執行中
+同時再去client類別(搜索的那個類別)也同時按下執行，切記一定要同時，這樣A JVM 執行中 B JVM 才能拿到此綁定的
+stub 只有第一次需要這樣同時執行，否則當A JVM 執行 然後關閉 B JVM 在執行 就拿不到了 原因也是分成兩個JVM堆疊
+所以當第一次同時執行後 拿到stub 之後 client 直接進行搜索 就可以將請求轉交給代理人 剩下就是代理人透過網路
+幫你調用服務物件的對應方法了

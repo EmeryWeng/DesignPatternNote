@@ -1,0 +1,5 @@
+package StrategyPatternExercise;
+
+public interface Skill {	//將技能的部分 獨立出來 針對介面而寫 
+	int attack(Hero attackingHero,Hero attackedHero);	//擁有一個攻擊，需傳入攻擊方以及被攻擊方
+}							//回傳int 為 傷害值

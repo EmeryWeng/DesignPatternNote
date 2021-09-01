@@ -1,0 +1,14 @@
+package FactoryPatternExercise;
+
+public class GameStart {
+	public static void main(String[] args) {
+		
+		RoleCreator r = new MagicanVillage();
+		Role role = r.startGame("FightMagican");
+		System.out.println(role);
+		
+		RoleCreator r1 = new WarrierVillage();
+		Role role1 = r1.startGame("Knight");
+		System.out.println(role1);
+	}
+}

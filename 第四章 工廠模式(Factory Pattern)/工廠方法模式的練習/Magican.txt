@@ -1,0 +1,11 @@
+package FactoryPatternExercise;
+
+public class Magican extends Role{
+	public Magican() {
+		super.name = "魔法師";
+		super.level = 10;
+		attackPoint = 40;
+		defense = 10;
+		hp = 100;
+	}
+}

@@ -1,0 +1,71 @@
+package FactoryPatternExercise;
+
+public abstract class Role {//Product
+	public String name;
+	public Head head;
+	public Hand hand;
+	public Foot foot;
+	public Weapon weapon;
+	public int level;
+	public int attackPoint = 10;
+	public int hp = 100;
+	public int defense = 0;
+	
+	public void showDetail() {
+		System.out.printf("名稱%s 等級%d 攻擊%d 血量%d 防禦%d%n",name,level,attackPoint,hp,defense);
+	}
+	public abstract void showEquipment();
+	@Override
+	public String toString() {
+		StringBuffer result = new StringBuffer();
+		result.append("-----"+name+"------\n");
+		if (head != null) {
+			result.append(head);
+			result.append("\n");
+		}
+		if (hand != null) {
+			result.append(hand);
+			result.append("\n");
+		}
+		if (foot != null) {
+			result.append(foot);
+			result.append("\n");
+		}
+		if (weapon != null) {
+			result.append(weapon);
+			result.append("\n");
+		}
+		return result.toString();
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getLevel() {
+		return level;
+	}
+	public void setLevel(int level) {
+		this.level = level;
+	}
+	public int getAttackPoint() {
+		return attackPoint;
+	}
+	public void setAttackPoint(int attackPoint) {
+		this.attackPoint = attackPoint;
+	}
+	public int getHp() {
+		return hp;
+	}
+	public void setHp(int hp) {
+		this.hp = hp;
+	}
+	public int getDefense() {
+		return defense;
+	}
+	public void setDefense(int defense) {
+		this.defense = defense;
+	}
+	
+}

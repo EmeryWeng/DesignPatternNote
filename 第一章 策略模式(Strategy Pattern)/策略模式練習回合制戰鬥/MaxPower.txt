@@ -1,0 +1,16 @@
+package StrategyPatternExercise;
+
+public class MaxPower implements Skill {	//為自定義的 終極大招，為測試用 假設一開始只有衝撞以及水球技能
+				//如果今天我們隨意新增招式，是否能再利用、好擴充、好維護呢?
+		//確實我們再利用了 Skill 也很好擴充 只需新增一個Class 並且實作，也很好維護 因為假設技能方面
+		//出問題 我們很容易知道 發生的問題點在哪
+	@Override
+	public int attack(Hero attackingHero, Hero attackedHero) {
+		attackedHero.lostHp(10000);		//假設此技能直接造成傷害值10000點
+		return 10000;
+	}
+	@Override
+	public String toString() {
+		return "終極大招";
+	}
+}

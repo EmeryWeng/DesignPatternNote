@@ -1,0 +1,10 @@
+package TemplateMethodPatternExercise;
+
+public class PorkSteakOmelette extends Omelette{
+
+	@Override
+	public void putCondiment() {
+		System.out.println("放豬排");
+	}
+	
+}

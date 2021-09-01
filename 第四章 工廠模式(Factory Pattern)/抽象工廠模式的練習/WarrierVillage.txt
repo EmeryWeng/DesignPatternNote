@@ -1,0 +1,21 @@
+package FactoryPatternExercise;
+
+public class WarrierVillage extends RoleCreator {	//戰士村莊，產出戰士的地方，他是個ConcreteCreator
+						//透過Creator定義的工廠方法，然後由子類別決定實際類別為何者
+						//由於戰士村莊是子類別，所以由他來決定戰士村莊產生的實際類別
+						//為何，這裡產生的一律都是戰士角色相關職業
+	@Override
+	public Role createRole(String type) {
+		Role role = null;
+		Equipment equipment = new WarrierEquipmentFactory();
+		if(type.equals("Knight")) {
+			role =  new Knight(equipment);
+			role.setName("超級騎士");
+		}else if(type.equals("Warrier")) {
+			role = new Warrier(equipment);
+			role.setName("超級戰士");
+		}
+		return role;
+	}
+	
+}

@@ -1,0 +1,16 @@
+package FactoryPatternExercise;
+
+public class RoleCreator {
+	public RoleSimpleFactory roles ;
+	public RoleCreator(RoleSimpleFactory roles) {
+		this.roles = roles;
+	}
+	public Role startGame(String type) {
+		Role role = null;
+		role = roles.createRole(type);
+		
+		role.showDetail();
+		
+		return role;
+	}
+}

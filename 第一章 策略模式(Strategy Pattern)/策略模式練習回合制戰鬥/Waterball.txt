@@ -1,0 +1,18 @@
+package StrategyPatternExercise;
+
+public class Waterball implements Skill{	//此為水球技能，屬於魔法技能 所以實作技能，重新定義attack
+
+	@Override
+	public int attack(Hero attackingHero, Hero attackedHero) {
+		attackingHero.lostMp(5);	//使用前 先扣除魔力值5
+		int injury = attackingHero.getWisdom()*2;	//水球攻擊所造成的傷害為 自身智力*2
+		attackedHero.lostHp(injury);
+		return injury;
+	}
+
+	@Override
+	public String toString() {
+		return "水球";
+	}
+
+}

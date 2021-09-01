@@ -1,0 +1,15 @@
+package DecoratorPatternExercise;
+
+public class FirePower extends WeaponDecorator{	//火屬性 屬於ConcreteDecorator，屬於裝飾者實作類別
+	
+	public FirePower(Weapon weapon) { 	//傳入「被裝飾者」武器本身
+		super("火", 5, weapon);		//將屬性的名稱以及屬性傷害與被裝飾者 傳進 父類別(WeaponDecorator)建構，可以想像
+	}					//父類別 雖為抽象類別，但依然有建構子 只為了接受屬性 並且加工，可以想像為加工廠
+	@Override				//但不准建構
+	public void special() {		//自身的特殊效果， 所以如果假設 是 火屬性+劍
+		super.special();	//此時呼叫到父類別的特殊方法，weapon只是一把普通的劍沒有效果
+		System.out.println("特殊效果 : 火焰造成 5點傷害");	//所以單純顯示此輪裝飾他的屬性效果
+	}
+	
+	
+}

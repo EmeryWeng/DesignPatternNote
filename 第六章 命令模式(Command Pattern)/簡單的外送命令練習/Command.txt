@@ -1,0 +1,5 @@
+package CommandPatternExercise;
+
+public interface Command {		//抽象的命令介面
+	public void execute();
+}

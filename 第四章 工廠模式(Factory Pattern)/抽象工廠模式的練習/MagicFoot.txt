@@ -1,0 +1,8 @@
+package FactoryPatternExercise;
+
+public class MagicanFoot implements Foot{	//鞋子的具象類別
+	@Override
+	public String toString() {
+		return "法師系列專用鞋子";
+	}
+}

@@ -1,0 +1,5 @@
+package No2ObserverPattern;
+
+public interface DisplayElement {
+	void display();
+}

@@ -1,0 +1,5 @@
+package FactoryPatternExercise;
+
+public interface Hand {	//物件之家族
+	public String toString();
+}

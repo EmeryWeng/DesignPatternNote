@@ -1,0 +1,16 @@
+package StrategyPatternExercise;
+
+public class Colliding implements Skill{	//此為衝撞技能 屬於技能 所以實作Skill 然後重新定義
+
+	@Override
+	public int attack(Hero attackingHero, Hero attackedHero) {	//衝撞技能的傷害 我們將之定義為
+								//攻擊者的力量扣掉被攻擊者的防禦
+		int injury = attackingHero.getStrength() - attackedHero.getDefense();
+		attackedHero.lostHp(injury);
+		return injury;
+	}
+	@Override
+	public String toString() {
+		return "衝撞";
+	}
+}

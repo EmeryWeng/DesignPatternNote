@@ -1,0 +1,13 @@
+package FactoryPatternExercise;
+
+public abstract class RoleCreator {
+	
+	public Role startGame(String type) {
+		Role role = createRole(type);
+		System.out.println("創角中");
+		role.showDetail();
+		
+		return role;
+	}
+	public abstract Role createRole(String type);
+}

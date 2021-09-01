@@ -1,0 +1,5 @@
+package DecoratorPatternExercise;
+
+public abstract class BreakfastDecorator extends Breakfast {
+	public abstract String getDescription();
+}

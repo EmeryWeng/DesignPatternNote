@@ -1,0 +1,10 @@
+package No1StrategyPattern;
+
+public class FlyWithWings implements FlyBehavior{
+
+	@Override
+	public void fly() {
+		System.out.println("鴨子飛行");
+	}
+
+}

@@ -1,0 +1,13 @@
+package FactoryPatternExercise;
+
+public class RoleSimpleFactory {
+	public Role createRole(String type) {
+		Role role = null;
+		if(type.equals("Warrier")) {
+			return new Warrier("A",10);
+		}else if(type.equals("Magican")) {
+			return new Magican("B",10);
+		}
+		return role;
+	}
+}

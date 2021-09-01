@@ -1,0 +1,7 @@
+package ObserverPatternExercise;
+
+public interface Observable {
+	public void register(Observer reader);
+	public void cancelRegister(Observer reader);
+	public void notifyObserver();
+}

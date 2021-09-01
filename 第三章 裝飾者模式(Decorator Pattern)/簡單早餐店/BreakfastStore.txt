@@ -1,0 +1,14 @@
+package DecoratorPatternExercise;
+
+public class BreakfastStore {
+
+	public static void main(String[] args) {
+		Breakfast breakfast = new Hamburger();
+		breakfast = new Meat(breakfast);
+		breakfast = new Egg(breakfast);
+		breakfast = new Lettuce(breakfast);
+		System.out.println("老闆請問多少錢?");
+		System.out.println(breakfast.getDescription()+"總共"+breakfast.cost()+"$");
+	}
+
+}

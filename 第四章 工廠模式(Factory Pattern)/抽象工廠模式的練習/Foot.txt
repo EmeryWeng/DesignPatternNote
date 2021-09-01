@@ -1,0 +1,5 @@
+package FactoryPatternExercise;
+
+public interface Foot {	//原料介面，這裡就是形成一隻角色所需要的一套裝備 各個裝備的部分互不相關，透過一個介面
+	public String toString();	//形成一個物件之家族，產生關聯，每個部份的裝備都形成一個抽象的介面
+}					//在實作對應角色的裝備

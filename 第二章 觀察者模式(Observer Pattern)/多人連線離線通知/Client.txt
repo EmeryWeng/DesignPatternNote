@@ -1,0 +1,35 @@
+package ObserverPatternExercise1;
+
+public class Client implements Observer{	//觀察者模式 一個主題 + 訂閱者or觀察者 
+	private final String name;		//一個客戶端 好比是一個主題 對 多(多個客戶端) 所以是個觀察者
+	private final String ip;		//所以實作Observer
+			//一個客戶端 擁有 名稱以及連線的位置
+	private Observable clientQueue;	//透過主題的實體類別 來註冊加入觀察者清單
+	public Client(String name,String ip,Observable clientQueue) {	//在建構完成同時，一併註冊
+		this.name = name;		//給定客戶的名稱 連線位置 以及實體主題 並且註冊
+		this.ip = ip;
+		this.clientQueue = clientQueue;
+		clientQueue.register(this);
+	}
+
+	@Override
+	public void update() { //當狀態異動時，會呼叫到註冊清單中的觀察者的update()方法 所以當異動時此方法
+		display();	//也會被呼叫，然後再去叫display()方法 顯示
+	}
+	public void display() {
+		if(((ClientQueue)this.clientQueue).isConnect()) {	//判斷現在狀態是連線還是離線
+			System.out.printf("%s從%s連線%n",name,ip);
+		}else {
+			System.out.printf("%s從%s離線%n",name,ip);
+		}
+		
+	}
+	public String getName() {
+		return name;
+	}
+
+	public String getIp() {
+		return ip;
+	}
+
+}

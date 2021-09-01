@@ -1,0 +1,13 @@
+package DecoratorPatternExercise;
+
+public class PoisonPower extends WeaponDecorator{	//毒屬性的設定
+
+	public PoisonPower(Weapon weapon) {
+		super("毒",10,weapon);
+	}
+	@Override
+	public void special() {
+		super.special();
+		System.out.println("特殊效果 : 每秒扣取敵人1HP 持續5秒");
+	}
+}

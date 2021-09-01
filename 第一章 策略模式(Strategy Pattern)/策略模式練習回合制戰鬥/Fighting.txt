@@ -1,0 +1,11 @@
+package StrategyPatternExercise;
+
+public class Fighting {
+	public static void main(String[] args) {	//為開始執行測試戰鬥之類別
+		Hero hero1 = new Hero("Weng",new MaxPower());	//將兩位英雄建構出來，一併指定招式
+		Hero hero2 = new Hero("Ming",new Waterball());
+		
+		Battle battle = new Battle(hero1,hero2);	//將管理回合制戰鬥的Battle類別建構出來
+		battle.start();		//並且執行戰鬥
+	}
+}

@@ -1,0 +1,31 @@
+package ObserverPatternExercise1;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class ClientQueue implements Observable {
+	private List<Observer> observers = new ArrayList<>();
+	private boolean connect = true;
+	public boolean isConnect() {
+		return connect;
+	}
+	public void setConnect(boolean connect) {
+		this.connect = connect;
+		notifyObserver();
+	}
+	@Override
+	public void register(Observer client) {
+		observers.add(client);
+	}
+	@Override
+	public void cancelRegister(Observer client) {
+		observers.remove(client);
+	}
+	@Override
+	public void notifyObserver() {
+		for(Observer client : observers) {
+			client.update();
+		}
+	}
+}

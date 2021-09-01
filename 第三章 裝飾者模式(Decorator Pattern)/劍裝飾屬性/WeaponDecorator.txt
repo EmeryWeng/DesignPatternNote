@@ -1,0 +1,39 @@
+package DecoratorPatternExercise;
+								//「裝飾者」及其子類別ConcreteDecorator的建構子皆已Component介面(
+															抽象類別)傳入
+								//這裡也就是 傳入Weapon(Component)
+public abstract class WeaponDecorator implements Weapon{	//屬性裝飾者類別，相當於Decorator 裝飾者類別，需繼承(實作)「原有類別」
+	protected String name;	//屬性名稱				//的介面或抽象類別。
+	protected int hitPoint;	//屬性的加成傷害
+	protected Weapon weapon;	//武器介面實體變數
+	public WeaponDecorator(String name,int hitPoint,Weapon weapon) {	//傳入屬性名稱，屬性加成傷害，以及「被裝飾者」的物件
+		this.name = name;
+		this.hitPoint = hitPoint;
+		this.weapon = weapon;
+	}
+	@Override
+	public String getName() {
+		return name + weapon.getName();		//如果傳入火屬性 此時經過裝飾，就是火+劍 形成 火劍
+	}
+
+	@Override
+	public int getHitPoint() {			//傷害就是 屬性傷害+武器(被裝飾者)的原始傷害
+		return hitPoint + weapon.getHitPoint();
+	}
+	
+	@Override
+	public void attack() {				//攻擊方法 實作Weapon介面而來
+		System.out.println(getName() + "造成" +getHitPoint() + "點傷害");
+		this.special();	//並且呼叫自身屬性的特殊方法，假設此輪是 火屬性 + 一把普通的劍	
+	}			//所以依然會呼叫自身 火屬性的特殊方法
+	public void special() {
+		if(weapon instanceof WeaponDecorator) {	//此時的weapon變數 是普通的劍，所以在if區塊條件不成立，因為劍不是裝飾者
+			WeaponDecorator deco = (WeaponDecorator) weapon;	//if條件式中左物件(weapon)右類別(WeaponDecorator)
+			deco.special();						//此物件是否在右邊類別的繼承體系中也就是是否為子類別
+		}								//或是實作右邊介面，或是本身
+	}
+	
+	public Weapon getWeapon() {
+		return weapon;
+	}
+}

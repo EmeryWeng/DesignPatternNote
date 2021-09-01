@@ -1,0 +1,17 @@
+package DecoratorPatternExercise;
+
+public class Tofu extends HotPotDecorator{
+	private HotPot hotPot;
+	public Tofu(HotPot hotPot) {
+		this.hotPot = hotPot;
+	}
+	@Override
+	public String getDescription() {
+		return hotPot.getDescription() +"加豆腐";
+	}
+
+	@Override
+	public int cost() {
+		return 25 + hotPot.cost();
+	}
+}
